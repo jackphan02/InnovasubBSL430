@@ -257,9 +257,11 @@ namespace IWU___PC_Inteface
 
             // Program was uploaded. Need now to reset
             int resetAddress = firmware.ResetAddress();
+            //int resetAddress = 0x120; // tested on MSP430 F5529
             cmd = BSLCoreCommandParser.LoadPC(resetAddress); 
             usbBSL.write(cmd);
             while (usbBSL.PacketsOut.Count > 0) Thread.Sleep(100);
+            
 
             // TODO: manage the threads and event of the USB HID
             // Re-connecting generates issues
